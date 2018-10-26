@@ -64,6 +64,8 @@ typedef struct network{
     tree *hierarchy;
 
     #ifdef GPU
+    float *input_state_gpu;
+
     float **input_gpu;
     float **truth_gpu;
 	float **input16_gpu;
@@ -151,6 +153,7 @@ YOLODLL_API void optimize_picture(network *net, image orig, int max_layer, float
 int get_network_nuisance(network net);
 int get_network_background(network net);
 YOLODLL_API void fuse_conv_batchnorm(network net);
+YOLODLL_API void calculate_binary_weights(network net);
 
 #ifdef __cplusplus
 }
